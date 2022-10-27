@@ -39,6 +39,49 @@ namespace Activity3_Linear_and_Binary
                 arr[i] = Int32.Parse(s1);
             }
         }
+
+
+        public void BinarySearch()
+        {
+            char ch;
+            do
+            {
+                //accept the number to be searched
+                Console.Write("\nEnter the element you want to search : ");
+                int item = Convert.ToInt32(Console.ReadLine());
+
+                //apply binary search 
+                int lowerbound = 0;
+                int upperbound = 0;
+
+                //obtain the index of the middle element
+                int mid = (lowerbound + upperbound) / 2;
+                int ctr = 1;
+
+                //loop to search fo the element
+                while ((item != arr[mid]) && (ctr <= upperbound))
+                {
+                    if (item == arr[mid])
+                        lowerbound = mid + 1;
+                    else 
+                        upperbound = mid - 1;
+
+                    mid = (lowerbound + upperbound) / 2;
+                    ctr++;
+                }
+                if (item == arr[mid])
+                    Console.WriteLine("\n" + item.ToString() + "found at position" + (mid+1).ToString());
+                else
+                    Console.WriteLine("\n" + item.ToString() + "not found in the array\n");
+                 Console.WriteLine("\nNumber of comparison : " + ctr);
+
+                Console.Write("\nContinue search (y/n): ");
+                ch = char.Parse(Console.ReadLine());
+
+            }while((ch == 'Y'));
+        }
+
+
         static void Main(string[] args)
         {
         }
